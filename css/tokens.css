@@ -1,0 +1,45 @@
+/* =========================================================================
+   Design token — figma3
+
+   File này chỉ chứa giá trị DÙNG CHUNG: bảng màu, font, thang độ đậm, cỡ
+   chữ và leading chung, chuyển động, bo góc. Số đo riêng của từng component
+   ghi thẳng trong file component đó, kèm nhãn nguồn gốc bên cạnh:
+
+   [FIGMA]  đọc thẳng từ panel inspector của Figma
+   [ĐO]     đo từ ảnh export 1:1 của bản thiết kế
+   [MẪU]    lấy từ file asset được cung cấp
+   [ƯỚC]    ước lượng, còn chờ xác nhận lại trong Figma
+   ========================================================================= */
+@layer tokens {
+  :root {
+    /* ---------- Màu: giá trị gốc ---------- */
+    --color-page: #ffffff;           /* [ƯỚC]   nền trang — thay bằng màu Figma */
+    --color-ink: #111111;            /* [ƯỚC]   chữ chính                       */
+    --color-accent: #cd794a;         /* [ƯỚC]   viền focus, điểm nhấn           */
+    --color-white: #ffffff;
+
+    /* ---------- Màu: theo ngữ nghĩa ----------
+       Component chỉ dùng tầng này, nhờ vậy đổi theme chỉ phải sửa ở đây. */
+    --surface-page: var(--color-page);
+    --text-primary: var(--color-ink);
+    --accent-stroke: var(--color-accent);
+
+    /* ---------- Chữ ----------
+       Font thương mại trong Figma → thay bằng font OFL tự lưu ở assets/fonts/
+       (xem css/fonts.css). Ghi rõ font gốc bên cạnh mỗi dòng. */
+    --font-display: Georgia, serif;          /* thay … */
+    --font-sans: system-ui, sans-serif;      /* thay … */
+
+    --text-body: 16px;
+    --leading-tight: 1.15;
+    --leading-normal: 1.5;
+
+    --weight-regular: 400;
+    --weight-bold: 700;
+
+    /* ---------- Hình khối, chuyển động ---------- */
+    --radius-pill: 999px;
+    --duration-fast: 160ms;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}

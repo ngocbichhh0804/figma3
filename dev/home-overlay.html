@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Overlay — figma3 Landing page vs Figma</title>
+<style>
+  /* Công cụ nội bộ, không giao cho khách: nạp index.html vào iframe
+     đúng khổ khung thiết kế (1920 × 1080) rồi đè ảnh export Figma lên trên.
+     Nút điều khiển là radio input đọc bằng :has() — không JavaScript.
+     Kéo trượt: thanh đỏ là ô resize của CSS (resize: horizontal) được kéo
+     giãn theo chiều dọc bằng scaleY, nên nắm chỗ nào trên thanh cũng kéo được.
+     Sinh tự động từ dev/pages.json (skill setup) — sửa mẫu rồi chạy lại
+     add-page/regen, đừng sửa tay từng file. */
+  :root {
+    --frame-w: 1920px;
+    --frame-rows: 1080;   /* chiều cao khung, không đơn vị để chia cho scaleY */
+    --frame-h: calc(var(--frame-rows) * 1px);
+  }
+
+  * { box-sizing: border-box; }
+  /* Thanh điều khiển fixed (bề ngang đúng màn hình, không bị thanh cuộn
+     che); body chừa đúng chiều cao một hàng của thanh. */
+  body { margin: 0; padding-block-start: 42px; background: #1e1e1e; font: 14px/1.4 system-ui, sans-serif; color: #eee; }
+
+  .bar {
+    display: flow-root;
+    position: fixed; inset-block-start: 0; inset-inline: 0; z-index: 10;
+    padding: 10px 16px; background: #111; border-block-end: 1px solid #333;
+  }
+  .bar strong { display: inline-block; vertical-align: middle; font-weight: 600; }
+  .bar label {
+    display: inline-block; vertical-align: middle;
+    margin-inline-start: 20px; cursor: pointer;
+  }
+  .bar label input { vertical-align: middle; margin-inline-end: 6px; }
+  /* Dãy link trang nằm góc phải cùng hàng với nút chọn chế độ. */
+  .bar nav { float: right; }
+  .bar nav a { color: #9cf; margin-inline-start: 20px; }
+  .bar nav [aria-current] { color: #fff; font-weight: 600; text-decoration: none; }
+
+  .stage { position: relative; width: var(--frame-w); margin: 0 auto; }
+  .stage iframe { display: block; width: var(--frame-w); height: var(--frame-h); border: 0; }
+  .ov {
+    position: absolute; inset-block-start: 0; inset-inline-start: 0;
+    width: var(--frame-w); pointer-events: none; opacity: .5;
+  }
+  .ov img { display: block; width: var(--frame-w); max-width: none; }
+  .ov__handle { display: none; }
+
+  body:has(#m-build:checked)  .ov { opacity: 0; }
+  body:has(#m-50:checked)     .ov { opacity: .5; }
+  body:has(#m-figma:checked)  .ov { opacity: 1; }
+
+  /* Kéo trượt: trái là Figma, phải là bản code. Bề ngang lớp Figma do
+     .ov__handle quyết định (khối absolute co theo nội dung, ảnh nằm
+     absolute nên không tính). */
+  body:has(#m-slide:checked) .ov {
+    opacity: 1; width: auto; height: var(--frame-h); overflow: hidden;
+  }
+  body:has(#m-slide:checked) .ov img {
+    position: absolute; inset-block-start: 0; inset-inline-start: 0;
+  }
+  body:has(#m-slide:checked) .ov__handle {
+    display: block; position: relative; z-index: 1;
+    width: calc(var(--frame-w) / 2); min-width: 24px; max-width: var(--frame-w);
+    height: 24px; overflow: hidden; resize: horizontal;
+    /* Vùng nắm của Chrome là tam giác ở góc dưới phải, phía trên hẹp dần.
+       Kéo giãn để chỉ 6px dưới cùng (chỗ tam giác rộng 18–24px) phủ khung,
+       phần trên đẩy ra ngoài và bị overflow của .ov cắt. */
+    inset-block-start: calc(var(--frame-h) * -3);
+    transform: scaleY(calc(var(--frame-rows) / 6)); transform-origin: top;
+    opacity: 0; pointer-events: auto; cursor: ew-resize;
+  }
+  /* Ô resize mặc định chỉ ~15px; nới ra 24px cho dễ nắm. */
+  body:has(#m-slide:checked) .ov__handle::-webkit-scrollbar { width: 24px; height: 24px; }
+  /* Thanh đỏ chỉ để nhìn, nằm trong vùng nắm; chuột đi xuyên qua xuống ô resize bên dưới. */
+  body:has(#m-slide:checked) .ov::after {
+    content: ""; position: absolute; z-index: 2;
+    inset-block: 0; inset-inline-end: 0; width: 3px;
+    background: #ff3b30; pointer-events: none;
+  }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <strong>figma3 — Landing page</strong>
+    <label><input type="radio" name="mode" id="m-build" /> Code only</label>
+    <label><input type="radio" name="mode" id="m-50" checked /> Overlay 50%</label>
+    <label><input type="radio" name="mode" id="m-figma" /> Figma only</label>
+    <label><input type="radio" name="mode" id="m-slide" /> Slider</label>
+    <nav aria-label="Pages">
+      <a href="home-overlay.html" aria-current="page">Landing page</a>
+    </nav>
+  </div>
+
+  <div class="stage">
+    <iframe src="../index.html" title="Code build" scrolling="no"></iframe>
+    <div class="ov"><div class="ov__handle"></div><img src="../docs/comparison/home/home-figma.png" alt="Figma export" /></div>
+  </div>
+</body>
+</html>

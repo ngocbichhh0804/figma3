@@ -1,0 +1,27 @@
+/* Cấu trúc cấp trang: container và lớp trang trí. Không flex/grid/gap. */
+@layer layout {
+  /* [ƯỚC] bề rộng nội dung = khung Figma − 2 × lề. Sửa theo số đo thật. */
+  .container {
+    width: 100%;
+    max-width: 1560px;
+    margin-inline: auto;
+    padding-inline: 24px;
+  }
+
+  .page {
+    --frame-w: 1920px;   /* [FIGMA] khung thiết kế, gốc toạ độ của lớp trang trí */
+
+    position: relative;
+    isolation: isolate;
+    overflow: clip;
+  }
+
+  @media (width >= 64rem) {
+    .container { padding-inline: 64px; }
+  }
+
+  /* Đủ rộng để chứa trọn nội dung → bỏ padding, lề tự ra đúng số Figma. */
+  @media (width >= 90rem) {
+    .container { padding-inline: 0px; }
+  }
+}
