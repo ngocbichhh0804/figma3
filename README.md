@@ -3,7 +3,7 @@
 Cắt tay từ Figma sang HTML semantic và **CSS thuần**. Không framework, không
 bước build, **không JavaScript**.
 
-**Live:** _điền URL_ · **Source:** _điền URL_ · **Thiết kế:** _điền link Figma_
+**Live:** https://ngocbichhh0804.github.io/figma3/ · **Overlay so Figma:** https://ngocbichhh0804.github.io/figma3/dev/home-overlay.html · **Source:** https://github.com/ngocbichhh0804/figma3 · **Thiết kế:** _điền link Figma_
 
 ## Độ khớp với bản thiết kế
 
