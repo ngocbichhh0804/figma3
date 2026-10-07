@@ -1,0 +1,41 @@
+/* Tiêu đề khối Cinzel 72 + link "Shop all →" canh phải. */
+@layer components {
+  .section-head {
+    display: flow-root;
+    margin-top: clamp(64px, calc(170 / 19.2 * 1vw), 170px);   /* [ĐO] chữ tiêu đề cách khối trước */
+  }
+
+  .section-head__title {
+    font-size: clamp(32px, calc(72 / 19.2 * 1vw), 72px);   /* [FIGMA] 72 */
+    line-height: calc(97 / 72);      /* [FIGMA] hộp 97 */
+  }
+
+  .section-head__link {
+    display: inline-block;
+    margin-top: 12px;                /* [ƯỚC] khổ nhỏ: link dưới tiêu đề */
+    font-weight: var(--weight-medium);
+    line-height: 24px;               /* [FIGMA] hộp 24 */
+    letter-spacing: 0.075em;         /* [ĐO] Figma 8%; dò theo vị trí chữ */
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .section-head__icon {
+    display: inline-block;
+    margin-left: 2px;                /* [ĐO] chữ "SHOP ALL" x = 1622 */
+    vertical-align: top;
+  }
+
+  @media (hover: hover) {
+    .section-head__link:hover { color: var(--accent); }
+  }
+
+  @media (width >= 64rem) {
+    .section-head__title { float: left; }
+
+    .section-head__link {
+      float: right;
+      margin-top: clamp(12px, calc(37 / 19.2 * 1vw), 37px);   /* [ĐO] chữ link y = 2179 */
+    }
+  }
+}

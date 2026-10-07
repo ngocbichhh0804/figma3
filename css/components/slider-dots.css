@@ -1,0 +1,32 @@
+/* Ba chấm báo vị trí slide. Bản Figma chỉ có một slide cho mỗi khối nên
+   chấm chỉ để trang trí (aria-hidden). */
+@layer components {
+  .slider-dots {
+    font-size: 0;
+    letter-spacing: 0;               /* khoảng trắng giữa inline-block không ăn letter-spacing */
+    line-height: 0;
+  }
+
+  .slider-dots--center { text-align: center; }
+
+  .slider-dots__dot {
+    display: inline-block;
+    vertical-align: middle;
+    inline-size: 12px;               /* [FIGMA] Ellipse 12 × 12 */
+    block-size: 12px;
+    margin-left: 24px;               /* [FIGMA] chấm cách nhau 36 (left 43 → 79) */
+    border-radius: 50%;
+    background-color: var(--line);   /* [FIGMA] #B1B1B1 */
+  }
+
+  /* Chấm đang chọn: vòng 26 viền 1px + chấm 12 ở giữa. */
+  .slider-dots__dot--active {
+    inline-size: 26px;               /* [FIGMA] active 26 × 26 */
+    block-size: 26px;
+    margin-left: 0;
+    border: 1px solid var(--accent);
+    background: radial-gradient(circle, var(--accent) 6px, transparent 6.5px);
+  }
+
+  .slider-dots__dot--active + .slider-dots__dot { margin-left: 17px; }   /* [FIGMA] left 43 − 26 */
+}

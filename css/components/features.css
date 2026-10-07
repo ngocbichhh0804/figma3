@@ -1,0 +1,55 @@
+/* Bốn dịch vụ: icon tròn 82 + nhãn Cinzel 24 hai dòng. */
+@layer components {
+  .features { margin-top: clamp(64px, calc(170 / 19.2 * 1vw), 170px); }   /* [ĐO] y = 1037 */
+
+  .features__list { display: flow-root; }
+
+  @media (width >= 90rem) {
+    .features__list { padding-left: 0.5px; }   /* [ĐO] icon đầu x = 191 */
+  }
+
+  .feature {
+    display: flow-root;
+    float: left;
+    inline-size: 100%;
+    margin-top: 24px;                /* [ƯỚC] khổ nhỏ */
+  }
+
+  .feature:first-child { margin-top: 0; }
+
+  .feature__icon {
+    float: left;
+    margin-right: 24px;              /* [ĐO] chữ bắt đầu x = 296 */
+  }
+
+  .feature__label {
+    display: flow-root;              /* nằm cạnh icon, không bị float cắt dòng */
+    padding-top: 9px;                /* [ĐO] chữ dòng 1 y = 1051 */
+    max-inline-size: 193.5px;        /* [FIGMA] 193.5 — ép xuống hai dòng như thiết kế */
+    font-family: var(--font-display);
+    font-size: 24px;                 /* [FIGMA] */
+    line-height: 32px;               /* [FIGMA] hộp 64 / 2 dòng */
+  }
+
+  @media (width >= 48rem) {
+    .feature {
+      inline-size: calc((100% - 40px) / 2);   /* [ƯỚC] 2 cột */
+      margin-left: 40px;
+    }
+
+    .feature:nth-child(odd) { clear: left; margin-left: 0; }
+    .feature:nth-child(2) { margin-top: 0; }
+  }
+
+  @media (width >= 90rem) {
+    .feature,
+    .feature:nth-child(odd) {
+      clear: none;
+      inline-size: calc(299.5 / 1540 * 100%);   /* [ĐO] icon 82 + 24 + chữ 193.5 */
+      margin-top: 0;
+      margin-left: calc(114 / 1540 * 100%);     /* [ĐO] cột cách nhau 413.5 */
+    }
+
+    .feature:first-child { margin-left: 0; }
+  }
+}

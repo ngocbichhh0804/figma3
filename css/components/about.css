@@ -1,0 +1,59 @@
+/* "Since 1990's": ảnh video bên trái, chữ + nút "About us" bên phải. */
+@layer components {
+  .about { margin-top: clamp(64px, calc(170 / 19.2 * 1vw), 170px); }   /* [ĐO] ảnh y = 1289 */
+
+  .about__inner { display: flow-root; }
+
+  .about__media { position: relative; }
+
+  .about__image {
+    inline-size: 100%;
+    aspect-ratio: 760 / 678;         /* [FIGMA] 760 × 678 */
+    object-fit: cover;
+  }
+
+  .about__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    inline-size: clamp(72px, calc(138 / 19.2 * 1vw), 138px);   /* [FIGMA] 138 */
+    border-radius: 50%;
+    translate: -50% -50%;
+  }
+
+  .about__content { padding-top: 32px; }   /* [ƯỚC] khổ nhỏ */
+
+  .about__title {
+    font-size: clamp(36px, calc(72 / 19.2 * 1vw), 72px);   /* [FIGMA] 72 */
+    line-height: calc(97 / 72);      /* [FIGMA] hộp 97 */
+  }
+
+  .about__text {
+    max-inline-size: 640px;          /* [FIGMA] 640 */
+    margin-top: clamp(16px, calc(21 / 19.2 * 1vw), 21px);   /* [ĐO] chữ y = 1535 */
+  }
+
+  .about__text p + p { margin-top: 20px; }   /* [FIGMA] paragraph spacing 20 */
+
+  .about__cta { letter-spacing: 0.055em; }   /* [ĐO] chữ "ABOUT US" Figma hộp 86 px */
+
+  .about__cta { margin-top: clamp(32px, calc(60 / 19.2 * 1vw), 60px); }   /* [ĐO] nút y = 1781 */
+
+  @media (width >= 64rem) {
+    .about__media {
+      float: left;
+      inline-size: calc(760 / 1540 * 100%);   /* [FIGMA] 760 */
+    }
+
+    .about__content {
+      margin-left: calc(840 / 1540 * 100%);   /* [ĐO] chữ x = 1030 */
+      padding-top: clamp(40px, calc(121 / 19.2 * 1vw), 121px);   /* [ĐO] chữ tiêu đề y = 1424 */
+    }
+
+    .about__play {
+      top: calc(270 / 678 * 100%);   /* [FIGMA] top 270 */
+      left: calc(311 / 760 * 100%);  /* [FIGMA] left 311 */
+      translate: none;
+    }
+  }
+}

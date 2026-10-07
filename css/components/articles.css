@@ -1,0 +1,68 @@
+/* Ba bài viết: ảnh 500 × 239, tiêu đề Cinzel 28, tóm tắt, "Read More". */
+@layer components {
+  .articles__list {
+    display: flow-root;
+    margin-top: clamp(28px, calc(50 / 19.2 * 1vw), 50px);   /* [ĐO] ảnh y = 6352 */
+  }
+
+  .article-card {
+    position: relative;
+    float: left;
+    inline-size: 100%;
+    margin-top: 40px;                /* [ƯỚC] khổ nhỏ */
+  }
+
+  .article-card:first-child { margin-top: 0; }
+
+  .article-card__image {
+    inline-size: 100%;
+    aspect-ratio: 500 / 239;         /* [FIGMA] 500 × 239 */
+    object-fit: cover;
+  }
+
+  .article-card__title {
+    margin-top: clamp(16px, calc(30 / 19.2 * 1vw), 30px);  /* [ĐO] chữ tiêu đề y = 6628 */
+    font-size: clamp(22px, calc(28 / 19.2 * 1vw), 28px);   /* [FIGMA] 28 */
+    line-height: calc(38 / 28);      /* [FIGMA] hộp 76 / 2 dòng */
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .article-card__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .article-card__text { margin-top: 7px; }   /* [ĐO] Figma gap 6 + làm tròn dòng 28.8 */
+
+  .article-card__more {
+    position: relative;
+    display: inline-block;
+    margin-top: 17px;                /* [ĐO] chữ y = 6783 */
+    font-style: italic;
+    font-weight: var(--weight-regular);
+    line-height: 24px;               /* [FIGMA] hộp 24 */
+    text-decoration: underline;      /* [FIGMA] Underline */
+    text-decoration-thickness: 1px;
+    text-underline-offset: 1px;      /* [ĐO] */
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  @media (hover: hover) {
+    .article-card:hover .article-card__title,
+    .article-card:hover .article-card__more { color: var(--accent); }
+  }
+
+  .article-card:focus-within .article-card__title { color: var(--accent); }
+
+  @media (width >= 64rem) {
+    .article-card,
+    .article-card:first-child {
+      inline-size: calc((100% - 2 * 20px) / 3);   /* [FIGMA] 500 + 20 + 500 + 20 + 500 */
+      margin-top: 0;
+      margin-left: 20px;
+    }
+
+    .article-card:first-child { margin-left: 0; }
+  }
+}

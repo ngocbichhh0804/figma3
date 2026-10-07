@@ -3,7 +3,9 @@
   body {
     font-family: var(--font-sans);
     font-size: var(--text-body);
-    line-height: var(--leading-normal);
+    font-weight: var(--weight-light);
+    line-height: var(--leading-body);
+    letter-spacing: 0.017em;         /* [ĐO] Figma 2%; dò theo vị trí từng chữ trên ảnh Figma */
     color: var(--text-primary);
     background-color: var(--surface-page);
   }
@@ -11,6 +13,10 @@
   h1, h2, h3 {
     font-family: var(--font-display);
     font-weight: var(--weight-regular);
-    line-height: var(--leading-tight);
+    line-height: var(--leading-display);
+    letter-spacing: var(--tracking-body);
+    overflow-wrap: anywhere;
   }
+
+  ul { list-style: none; padding: 0; margin: 0; }
 }

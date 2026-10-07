@@ -4,36 +4,373 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Landing page — figma3</title>
-    <meta name="description" content="" />
+    <title>Furnics — Wooden furniture for living rooms, bedrooms and kitchens</title>
+    <meta name="description" content="Furnics furniture store: wooden table sets, sofas and decor. Quick delivery, pick up in store, special packaging and easy returns." />
 
     <!-- Thứ tự layer khai báo một lần; nhờ vậy không cần !important. -->
     <style>
       @layer reset, tokens, base, layout, components, utilities;
     </style>
 
+    <link rel="preload" href="assets/fonts/cinzel-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/poppins-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/poppins-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/bebas-neue-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/layout.css" />
-    <!-- css/components/*.css của trang này -->
+    <link rel="stylesheet" href="css/components/logo.css" />
+    <link rel="stylesheet" href="css/components/button.css" />
+    <link rel="stylesheet" href="css/components/slider-dots.css" />
+    <link rel="stylesheet" href="css/components/site-header.css" />
+    <link rel="stylesheet" href="css/components/hero.css" />
+    <link rel="stylesheet" href="css/components/features.css" />
+    <link rel="stylesheet" href="css/components/about.css" />
+    <link rel="stylesheet" href="css/components/section-head.css" />
+    <link rel="stylesheet" href="css/components/product-track.css" />
+    <link rel="stylesheet" href="css/components/testimonial.css" />
+    <link rel="stylesheet" href="css/components/categories.css" />
+    <link rel="stylesheet" href="css/components/subscribe.css" />
+    <link rel="stylesheet" href="css/components/articles.css" />
+    <link rel="stylesheet" href="css/components/brands.css" />
+    <link rel="stylesheet" href="css/components/site-footer.css" />
     <link rel="stylesheet" href="css/utilities.css" />
   </head>
 
   <body>
     <a href="#main" class="skip-link">Skip to content</a>
 
-    <!-- Khung Figma "Landing page": 1920 × 1080 -->
+    <!-- Mũi tên "la:arrow-right" 24 × 24 dùng chung cho mọi nút/link -->
+    <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
+      <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path d="M4.5 12h15M13.5 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5" />
+      </symbol>
+    </svg>
+
+    <!-- Khung Figma "Furnics": 1920 × 7786 -->
     <div class="page page--home">
       <header class="site-header">
-        <div class="container"></div>
+        <div class="container site-header__inner">
+          <a class="logo site-header__logo" href="index.html" aria-label="Furnics home">Furnics<span class="logo__dot">.</span></a>
+
+          <ul class="site-header__actions" role="list">
+            <li class="site-header__action">
+              <a href="#search" class="site-header__icon-link">
+                <img src="assets/icon/ion_search.png" width="22" height="22" alt="Search" />
+              </a>
+            </li>
+            <li class="site-header__action">
+              <a href="#account" class="site-header__icon-link">
+                <img src="assets/icon/ion_person.png" width="22" height="22" alt="Account" />
+              </a>
+            </li>
+            <li class="site-header__action">
+              <a href="#cart" class="site-header__icon-link site-header__cart">
+                <img src="assets/icon/ion_cart.png" width="22" height="22" alt="" /><span class="visually-hidden">Cart, items:</span>(0)
+              </a>
+            </li>
+          </ul>
+
+          <input type="checkbox" id="nav-toggle" class="site-header__toggle visually-hidden" />
+          <label for="nav-toggle" class="site-header__burger">
+            <span class="visually-hidden">Menu</span>
+          </label>
+
+          <nav class="site-nav" aria-label="Main">
+            <ul class="site-nav__list" role="list">
+              <li class="site-nav__item"><a class="site-nav__link" href="index.html" aria-current="page">Home</a></li>
+              <li class="site-nav__item"><a class="site-nav__link" href="#about">About</a></li>
+              <li class="site-nav__item"><a class="site-nav__link" href="#services">Services</a></li>
+              <li class="site-nav__item"><a class="site-nav__link" href="#featured">Shop</a></li>
+              <li class="site-nav__item"><a class="site-nav__link" href="#articles">Blog</a></li>
+              <li class="site-nav__item"><a class="site-nav__link" href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
       </header>
 
-      <main id="main" class="container"></main>
+      <main id="main">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="container hero__inner">
+            <img class="hero__image" src="assets/img/hero-wooden-table-set.jpg" width="760" height="682"
+                 alt="Wooden desk with a bent-wood chair and a white lamp in a sunlit room" />
+            <div class="hero__content">
+              <h1 class="hero__title" id="hero-title">Wooden Table Set</h1>
+              <p class="hero__text">Aliquet donec ut arcu risus amet mattis diam gravida. Ac vestibulum quis proin in aliquam et et auctor. Amet urna est arcu euismod egestas morbi nunc lacus. Nec id rutrum mauris commodo habitant amet quisque. Velit ornare pellentesque facilisi in odio nibh.</p>
+              <a class="button button--solid hero__cta" href="#featured">Shop now<svg class="button__icon" width="24" height="24" aria-hidden="true"><use href="#icon-arrow" /></svg></a>
+              <div class="slider-dots hero__dots" aria-hidden="true">
+                <span class="slider-dots__dot slider-dots__dot--active"></span><span class="slider-dots__dot"></span><span class="slider-dots__dot"></span>
+              </div>
+            </div>
+          </div>
+        </section>
 
-      <footer class="site-footer">
-        <div class="container"></div>
+        <section class="features" id="services" aria-label="Our services">
+          <ul class="container features__list" role="list">
+            <li class="feature">
+              <img class="feature__icon" src="assets/icon/1.png" width="82" height="82" alt="" />
+              <p class="feature__label">Quick Delivery</p>
+            </li>
+            <li class="feature">
+              <img class="feature__icon" src="assets/icon/2.png" width="82" height="82" alt="" />
+              <p class="feature__label">Pick Up In Store</p>
+            </li>
+            <li class="feature">
+              <img class="feature__icon" src="assets/icon/3.png" width="82" height="82" alt="" />
+              <p class="feature__label">Special Packaging</p>
+            </li>
+            <li class="feature">
+              <img class="feature__icon" src="assets/icon/4.png" width="82" height="82" alt="" />
+              <p class="feature__label">Return &amp; Refund Policy</p>
+            </li>
+          </ul>
+        </section>
+
+        <section class="about" id="about" aria-labelledby="about-title">
+          <div class="container about__inner">
+            <div class="about__media">
+              <img class="about__image" src="assets/icon/Video.png" width="760" height="678"
+                   alt="Brown leather sofa with a grey checked throw" />
+              <a class="about__play" href="#about-video">
+                <img src="assets/icon/Play.png" width="138" height="138" alt="Play the Furnics story video" />
+              </a>
+            </div>
+            <div class="about__content">
+              <h2 class="about__title" id="about-title">Since 1990’s</h2>
+              <div class="about__text">
+                <p>Ac varius lectus tellus tellus quisque tristique aenean. Volutpat velit nulla eu iaculis risus in urna. Eu morbi vel purus velit dui vel egestas purus sed. Eget turpis tincidunt faucibus montes arcu in nullam tortor orci. Nulla tellus sed purus vestibulum sagittis pretium donec nec mattis ollis porta sit ut.</p>
+                <p>Facilisi ut vulputate volutpat a aliquet. Facilisis sed quis pretium amet hac. Justo tristique sagittis sodales viverra venenatis integer fringilla.</p>
+              </div>
+              <a class="button button--outline about__cta" href="#about">About us<svg class="button__icon" width="24" height="24" aria-hidden="true"><use href="#icon-arrow" /></svg></a>
+            </div>
+          </div>
+        </section>
+
+        <section class="products products--featured" id="featured" aria-labelledby="featured-title">
+          <div class="container">
+            <div class="section-head">
+              <h2 class="section-head__title" id="featured-title">Our Featured Products</h2>
+              <a class="section-head__link" href="#shop">Shop all<svg class="section-head__icon" width="24" height="24" aria-hidden="true"><use href="#icon-arrow" /></svg></a>
+            </div>
+            <div class="product-track">
+              <ul class="product-track__list" role="list">
+                <li class="product-card">
+                  <img class="product-card__image" src="assets/img/denys-striyeshyn-wJ7yGwz2-00-unsplash%202.png" width="425" height="548" alt="" />
+                  <h3 class="product-card__name"><a class="product-card__link" href="#shop">Black Sofa Set</a></h3>
+                  <p class="product-card__price">$200</p>
+                  <a class="product-card__cart" href="#cart">Add to cart<span class="visually-hidden">: Black Sofa Set</span></a>
+                </li>
+                <li class="product-card">
+                  <img class="product-card__image" src="assets/img/denys-striyeshyn-wJ7yGwz2-00-unsplash%203.png" width="425" height="548" alt="" />
+                  <h3 class="product-card__name"><a class="product-card__link" href="#shop">Circle Dining Table</a></h3>
+                  <p class="product-card__price">$200</p>
+                  <a class="product-card__cart" href="#cart">Add to cart<span class="visually-hidden">: Circle Dining Table</span></a>
+                </li>
+                <li class="product-card">
+                  <img class="product-card__image" src="assets/img/denys-striyeshyn-wJ7yGwz2-00-unsplash%204.png" width="425" height="548" alt="" />
+                  <h3 class="product-card__name"><a class="product-card__link" href="#shop">Minimal Sofa</a></h3>
+                  <p class="product-card__price">$200</p>
+                  <a class="product-card__cart" href="#cart">Add to cart<span class="visually-hidden">: Minimal Sofa</span></a>
+                </li>
+                <li class="product-card">
+                  <!-- Figma chỉ xuất phần thấy được (305 px, cắt bên trái ảnh) -->
+                  <img class="product-card__image product-card__image--peek-start" src="assets/img/denys-striyeshyn-wJ7yGwz2-00-unsplash%205.png" width="305" height="548" alt="" />
+                  <h3 class="product-card__name"><a class="product-card__link" href="#shop">Pattern Tea Table</a></h3>
+                  <p class="product-card__price">$200</p>
+                  <a class="product-card__cart" href="#cart">Add to cart<span class="visually-hidden">: Pattern Tea Table</span></a>
+                </li>
+              </ul>
+            </div>
+            <div class="slider-dots slider-dots--center" aria-hidden="true">
+              <span class="slider-dots__dot slider-dots__dot--active"></span><span class="slider-dots__dot"></span><span class="slider-dots__dot"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="testimonial" aria-label="Customer review">
+          <div class="container testimonial__inner">
+            <img class="testimonial__mark" src="assets/icon/mdi_format-quote-open.png" width="165" height="116" alt="" />
+            <figure class="testimonial__figure">
+              <blockquote class="testimonial__quote">
+                <p><span class="testimonial__nudge testimonial__nudge--start"><span class="testimonial__punct testimonial__punct--open">“</span>Pretium</span> feugiat vel morbi a pellen tesque&nbsp; sagittis lorem habi tasse <span class="testimonial__line testimonial__line--2"><span class="testimonial__nudge testimonial__nudge--cursus">cursus.</span> Suspen dise tempus oncu enim pellen tesque este pretium in</span> <span class="testimonial__line testimonial__line--3">neque<span class="testimonial__punct testimonial__punct--comma">,</span> elit morbi sagittis lorem habi mattis.<span class="testimonial__punct testimonial__punct--close">”</span></span></p>
+              </blockquote>
+              <figcaption class="testimonial__author">Hana Kimusaki</figcaption>
+            </figure>
+            <svg class="testimonial__arrow testimonial__arrow--prev" width="92" height="66" viewBox="0 0 92 66" aria-hidden="true">
+              <path d="M92 33H1M34 0L1 33l33 33" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+            <svg class="testimonial__arrow testimonial__arrow--next" width="92" height="66" viewBox="0 0 92 66" aria-hidden="true">
+              <path d="M0 33h91M58 0l33 33-33 33" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+          </div>
+        </section>
+
+        <section class="categories" aria-label="Shop by room">
+          <div class="container">
+            <ul class="categories__list" role="list">
+              <li class="category">
+                <a class="category__link" href="#shop">
+                  <h3 class="category__name">Living Rooms</h3>
+                  <img class="category__image" src="assets/img/nathan-oakley-UJWFy-5uzS8-unsplash%201.png" width="500" height="635" alt="" />
+                </a>
+              </li>
+              <li class="category">
+                <a class="category__link" href="#shop">
+                  <h3 class="category__name">Bedrooms</h3>
+                  <img class="category__image" src="assets/img/nathan-oakley-OngbrOmqtzc-unsplash%201.png" width="500" height="635" alt="" />
+                </a>
+              </li>
+              <li class="category">
+                <a class="category__link" href="#shop">
+                  <h3 class="category__name">Kitchens</h3>
+                  <img class="category__image" src="assets/img/pexels-dmitry-zvolskiy-2062426%201.png" width="500" height="635" alt="" />
+                </a>
+              </li>
+            </ul>
+            <div class="slider-dots slider-dots--center" aria-hidden="true">
+              <span class="slider-dots__dot slider-dots__dot--active"></span><span class="slider-dots__dot"></span><span class="slider-dots__dot"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="subscribe" aria-labelledby="subscribe-title">
+          <div class="container subscribe__inner">
+            <h2 class="subscribe__title" id="subscribe-title">Get Offers &amp; Discounts By Subscribing Us</h2>
+            <form class="subscribe__form" action="#" method="post">
+              <label class="visually-hidden" for="subscribe-email">Email address</label>
+              <input class="subscribe__input" id="subscribe-email" name="email" type="email"
+                     autocomplete="email" required placeholder="Your e-mail address" />
+              <button class="subscribe__button" type="submit">Subscribe now</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="products products--trending" aria-labelledby="trending-title">
+          <div class="container">
+            <div class="section-head">
+              <h2 class="section-head__title" id="trending-title">Trending Products</h2>
+              <a class="section-head__link" href="#shop">Shop all<svg class="section-head__icon" width="24" height="24" aria-hidden="true"><use href="#icon-arrow" /></svg></a>
+            </div>
+            <div class="product-track product-track--offset">
+              <ul class="product-track__list" role="list">
+                <li class="product-card">
+                  <!-- Figma chỉ xuất phần thấy được (305 px, cắt bên phải ảnh) -->
+                  <img class="product-card__image product-card__image--peek-end" src="assets/img/denys-striyeshyn-wJ7yGwz2-00-unsplash%202%20(1).png" width="305" height="548" alt="" />
+                  <h3 class="product-card__name"><a class="product-card__link" href="#shop">Sofa Set &amp; Vase Table</a></h3>
+                  <p class="product-card__price">$200</p>
+                  <a class="product-card__cart" href="#cart">Add to cart<span class="visually-hidden">: Sofa Set &amp; Vase Table</span></a>
+                </li>
+                <li class="product-card">
+                  <img class="product-card__image" src="assets/img/denys-striyeshyn-wJ7yGwz2-00-unsplash%203%20(1).png" width="425" height="548" alt="" />
+                  <h3 class="product-card__name"><a class="product-card__link" href="#shop">Vintage Sofa</a></h3>
+                  <p class="product-card__price">$200</p>
+                  <a class="product-card__cart" href="#cart">Add to cart<span class="visually-hidden">: Vintage Sofa</span></a>
+                </li>
+                <li class="product-card">
+                  <img class="product-card__image" src="assets/img/denys-striyeshyn-wJ7yGwz2-00-unsplash%204%20(1).png" width="425" height="548" alt="" />
+                  <h3 class="product-card__name"><a class="product-card__link" href="#shop">Hope Chest</a></h3>
+                  <p class="product-card__price">$200</p>
+                  <a class="product-card__cart" href="#cart">Add to cart<span class="visually-hidden">: Hope Chest</span></a>
+                </li>
+                <li class="product-card">
+                  <img class="product-card__image" src="assets/img/denys-striyeshyn-wJ7yGwz2-00-unsplash%205%20(1).png" width="425" height="548" alt="" />
+                  <h3 class="product-card__name"><a class="product-card__link" href="#shop">Writing Table</a></h3>
+                  <p class="product-card__price">$200</p>
+                  <a class="product-card__cart" href="#cart">Add to cart<span class="visually-hidden">: Writing Table</span></a>
+                </li>
+              </ul>
+            </div>
+            <div class="slider-dots slider-dots--center" aria-hidden="true">
+              <span class="slider-dots__dot slider-dots__dot--active"></span><span class="slider-dots__dot"></span><span class="slider-dots__dot"></span>
+            </div>
+          </div>
+        </section>
+
+        <section class="articles" id="articles" aria-labelledby="articles-title">
+          <div class="container">
+            <div class="section-head">
+              <h2 class="section-head__title" id="articles-title">Read Our Articles</h2>
+              <a class="section-head__link" href="#articles">See all articles<svg class="section-head__icon" width="24" height="24" aria-hidden="true"><use href="#icon-arrow" /></svg></a>
+            </div>
+            <ul class="articles__list" role="list">
+              <li class="article-card">
+                <img class="article-card__image" src="assets/img/Rectangle%20168.png" width="500" height="239" alt="" />
+                <h3 class="article-card__title"><a class="article-card__link" href="#articles">Best Looking Interior Things For Bedrooms</a></h3>
+                <p class="article-card__text">Enim ut nunc, ultrices mauris felis viverra amet. Ante sed dictum nisi suscipit ac ut faucibus pretium interdum.</p>
+                <a class="article-card__more" href="#articles">Read More<span class="visually-hidden">: Best Looking Interior Things For Bedrooms</span></a>
+              </li>
+              <li class="article-card">
+                <img class="article-card__image" src="assets/img/Rectangle%20169.png" width="500" height="239" alt="" />
+                <h3 class="article-card__title"><a class="article-card__link" href="#articles">Trending Modern Furniture Design In 2022</a></h3>
+                <p class="article-card__text">Ante sed dictum nisi suscipit ac ut faucibus pretium interdum. Enim ut nunc, ultrices mauris felis viverra amet.</p>
+                <a class="article-card__more" href="#articles">Read More<span class="visually-hidden">: Trending Modern Furniture Design In 2022</span></a>
+              </li>
+              <li class="article-card">
+                <img class="article-card__image" src="assets/img/Rectangle%20170.png" width="500" height="239" alt="" />
+                <h3 class="article-card__title"><a class="article-card__link" href="#articles">Why Is Simple Firniture Design Looks Fabulous</a></h3>
+                <p class="article-card__text">Faucibus pretium interdum nim ut nunc, ultrices mauris felis viverra amet. Ante sed dictum nisi suscipit ac ut.</p>
+                <a class="article-card__more" href="#articles">Read More<span class="visually-hidden">: Why Is Simple Firniture Design Looks Fabulous</span></a>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="brands" aria-label="Brands we work with">
+          <ul class="container brands__list" role="list">
+            <li class="brands__item"><img src="assets/img/Niferzene.png" width="136" height="13" alt="Niferzene" /></li>
+            <li class="brands__item"><img src="assets/img/MARTAN..png" width="192" height="29" alt="Martan." /></li>
+            <li class="brands__item"><img src="assets/img/FurniCare.png" width="191" height="33" alt="FurniCare" /></li>
+            <li class="brands__item"><img src="assets/img/Makefixtures.png" width="224" height="30" alt="Makefixtures" /></li>
+            <li class="brands__item"><img src="assets/img/KG91.png" width="90" height="28" alt="KG91" /></li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="site-footer" id="contact">
+        <div class="container site-footer__inner">
+          <div class="site-footer__brand">
+            <a class="logo site-footer__logo" href="index.html" aria-label="Furnics home">Furnics<span class="logo__dot">.</span></a>
+            <p class="site-footer__text">Mi facilisis facilisis orci vitae. Cum nisi morbi <span class="site-footer__fit">integer tincidunt ornare ac praesent in. Dolor</span> tempus arcu sit quis nunc arcu facilisis quis eget nisi morbi integer.</p>
+            <p class="site-footer__copy">© 2022 Furnics. Designed by <a class="site-footer__credit" href="https://templatesjungle.com/">TemplatesJungle</a></p>
+          </div>
+
+          <nav class="site-footer__col site-footer__col--links" aria-labelledby="footer-links">
+            <h2 class="site-footer__heading" id="footer-links">Links</h2>
+            <ul class="site-footer__list" role="list">
+              <li class="site-footer__item"><a class="site-footer__link" href="index.html" aria-current="page">Home</a></li>
+              <li class="site-footer__item"><a class="site-footer__link" href="#about">About</a></li>
+              <li class="site-footer__item"><a class="site-footer__link" href="#services">Services</a></li>
+              <li class="site-footer__item"><a class="site-footer__link" href="#featured">Shop</a></li>
+              <li class="site-footer__item"><a class="site-footer__link" href="#articles">Blog</a></li>
+              <li class="site-footer__item"><a class="site-footer__link" href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+
+          <div class="site-footer__col site-footer__col--social">
+            <h2 class="site-footer__heading">Social</h2>
+            <ul class="site-footer__list" role="list">
+              <li class="site-footer__item"><a class="site-footer__link" href="https://facebook.com/">Facebook</a></li>
+              <li class="site-footer__item"><a class="site-footer__link" href="https://instagram.com/">Instagram</a></li>
+              <li class="site-footer__item"><a class="site-footer__link" href="https://pinterest.com/">Pinterest</a></li>
+              <li class="site-footer__item"><a class="site-footer__link" href="https://twitter.com/">Twitter</a></li>
+              <li class="site-footer__item"><a class="site-footer__link" href="https://youtube.com/">Youtube</a></li>
+            </ul>
+          </div>
+
+          <div class="site-footer__col site-footer__col--contact">
+            <h2 class="site-footer__heading">Contact</h2>
+            <address class="site-footer__address">
+              <ul class="site-footer__list" role="list">
+                <li class="site-footer__item"><a class="site-footer__contact site-footer__contact--phone" href="tel:+120345678910">+ 12<span class="site-footer__glyph site-footer__glyph--paren">(0)</span> 34 56 78 910</a></li>
+                <li class="site-footer__item"><a class="site-footer__contact" href="mailto:hello@templatesjungle.com">hello<span class="site-footer__glyph site-footer__glyph--at">@</span>templatesjungle.com</a></li>
+                <li class="site-footer__item"><span class="site-footer__contact site-footer__contact--address">Tea Berry, Marinette, USA</span></li>
+              </ul>
+            </address>
+          </div>
+        </div>
       </footer>
     </div>
   </body>

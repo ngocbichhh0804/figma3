@@ -1,0 +1,131 @@
+/* Đầu trang: logo, nav chính, ba icon. Viền dưới 1px chạy hết bề ngang. */
+@layer components {
+  .site-header {
+    border-bottom: 1px solid var(--line);   /* [ĐO] đường kẻ y = 104 */
+  }
+
+  .site-header__inner {
+    display: flow-root;
+    position: relative;
+    padding-block: 27px;             /* [ĐO] logo 50 → hộp đầu trang 104 */
+  }
+
+  .site-header__logo {
+    float: left;
+    margin-block: 1px -1px;          /* [ĐO] chữ logo y = 35 */
+  }
+
+  .site-header__actions {
+    float: right;
+    margin-top: 13px;                /* [ĐO] icon y = 41 */
+    margin-right: -2px;              /* [ĐO] dấu ")" chạm x = 1728 */
+    font-size: 0;
+    letter-spacing: 0;               /* khoảng trắng giữa inline-block không ăn letter-spacing */
+  }
+
+  .site-header__action {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 40px;               /* [ĐO] icon cách nhau 62 − 22 */
+  }
+
+  .site-header__action:first-child { margin-left: 0; }
+
+  .site-header__icon-link {
+    display: inline-block;
+    padding-top: 1px;                /* [ĐO] icon 22 giữa dòng 24 */
+    font-size: 16px;
+    font-weight: var(--weight-regular);
+    line-height: 24px;
+    letter-spacing: var(--tracking-caps);
+  }
+
+  .site-header__icon-link img { display: inline-block; vertical-align: top; }
+
+  .site-header__cart { padding-top: 0; }
+  .site-header__cart img { margin-top: 1px; margin-right: 4px; }   /* [ĐO] "(0)" kết thúc x = 1728 */
+
+  /* ---------- Menu thu gọn (khổ nhỏ): checkbox + :has(), không JS ---------- */
+  .site-header__burger {
+    float: right;
+    position: relative;
+    inline-size: 44px;               /* [ƯỚC] vùng chạm 44 px */
+    block-size: 44px;
+    margin: 3px 16px 0 0;
+    cursor: pointer;
+    background:
+      linear-gradient(currentColor, currentColor) center 14px / 24px 1.5px no-repeat,
+      linear-gradient(currentColor, currentColor) center 21px / 24px 1.5px no-repeat,
+      linear-gradient(currentColor, currentColor) center 28px / 24px 1.5px no-repeat;
+  }
+
+  .site-header__toggle:focus-visible + .site-header__burger {
+    outline: 2px solid var(--accent-stroke);
+    outline-offset: 2px;
+  }
+
+  .site-nav {
+    display: none;
+    clear: both;
+    padding-top: 16px;               /* [ƯỚC] */
+  }
+
+  .site-header:has(.site-header__toggle:checked) .site-nav { display: block; }
+
+  .site-nav__link {
+    display: block;
+    padding-block: 10px;             /* [ƯỚC] vùng chạm 44 px */
+    font-weight: var(--weight-regular);
+    line-height: 24px;               /* [FIGMA] hộp 24 */
+    letter-spacing: var(--tracking-caps);   /* [FIGMA] 8% */
+    text-transform: uppercase;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .site-nav__link[aria-current="page"] { color: var(--accent); }
+
+  @media (hover: hover) {
+    .site-nav__link:hover,
+    .site-header__icon-link:hover { color: var(--accent); }
+  }
+
+  /* Màn cảm ứng: nới vùng chạm icon lên 44 px mà không đổi bố cục. */
+  @media (pointer: coarse) {
+    .site-header__icon-link {
+      padding: 11px;
+      margin: -11px;
+    }
+  }
+
+  @media (width < 30rem) {
+    .site-header__action { margin-left: 20px; }   /* [ƯỚC] điện thoại hẹp */
+    .site-header__burger { margin-right: 8px; }
+  }
+
+  /* ---------- Desktop: nav nằm một hàng giữa logo và icon ---------- */
+  @media (width >= 64rem) {
+    .site-header__burger { display: none; }
+
+    .site-nav {
+      display: block;
+      float: right;
+      clear: none;
+      padding-top: 14px;             /* [ĐO] chữ nav khớp ảnh Figma */
+      margin-right: calc(99 / 1540 * 100%);    /* [ĐO] CONTACT x = 1370, icon x = 1556 */
+    }
+
+    .site-nav__list { font-size: 0; letter-spacing: 0; }
+
+    .site-nav__item {
+      display: inline-block;
+      margin-left: clamp(20px, calc(48.4 / 19.2 * 1vw), 48.4px);   /* [ĐO] HOME x = 842 → CONTACT 1370 */
+    }
+
+    .site-nav__item:first-child { margin-left: 0; }
+
+    .site-nav__link {
+      padding-block: 0;
+      font-size: 16px;               /* [FIGMA] */
+    }
+  }
+}

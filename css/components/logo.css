@@ -1,0 +1,17 @@
+/* Logo chữ "FURNICS." — Bebas Neue, dấu chấm màu olive. */
+@layer components {
+  .logo {
+    display: inline-block;
+    font-family: var(--font-logo);
+    font-size: 42px;                 /* [FIGMA] */
+    line-height: 50px;               /* [FIGMA] hộp 120 × 50 */
+    letter-spacing: 0.02em;          /* [FIGMA] 2% */
+    text-transform: uppercase;       /* [FIGMA] Case: Uppercase */
+    color: var(--text-primary);
+  }
+
+  .logo__dot {
+    color: var(--accent);            /* [ĐO] dấu chấm olive */
+    text-transform: lowercase;       /* [FIGMA] Span: Lowercase */
+  }
+}

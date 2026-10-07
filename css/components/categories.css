@@ -1,0 +1,49 @@
+/* Ba phòng: nhãn Cinzel 28 trên ảnh 500 × 635, hàng rộng 1580 (lố 20 px mỗi bên). */
+@layer components {
+  .categories { margin-top: clamp(64px, calc(171 / 19.2 * 1vw), 171px); }   /* [ĐO] chữ nhãn y = 3696 */
+
+  .categories__list { display: flow-root; }
+
+  .category {
+    float: left;
+    inline-size: 100%;
+    margin-top: 32px;                /* [ƯỚC] khổ nhỏ */
+  }
+
+  .category:first-child { margin-top: 0; }
+
+  .category__link { display: block; }
+
+  .category__name {
+    padding-left: 20px;              /* [FIGMA] padding left 20 */
+    font-size: clamp(22px, calc(28 / 19.2 * 1vw), 28px);   /* [FIGMA] 28 */
+    line-height: calc(38 / 28);      /* [FIGMA] hộp 38 */
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .category__image {
+    inline-size: 100%;
+    aspect-ratio: 500 / 635;         /* [FIGMA] 500 × 635 */
+    margin-top: 10px;                /* [ĐO] ảnh y = 3737 */
+    object-fit: cover;
+  }
+
+  @media (hover: hover) {
+    .category__link:hover .category__name { color: var(--accent); }
+  }
+
+  .categories .slider-dots { margin-top: clamp(32px, calc(50 / 19.2 * 1vw), 50px); }   /* [ĐO] chấm y = 4422 */
+
+  @media (width >= 48rem) {
+    .categories__list { margin-inline: calc(-20 / 1540 * 100%); }   /* [ĐO] hàng x 170 → 1750 */
+
+    .category,
+    .category:first-child {
+      inline-size: calc(500 / 1580 * 100%);   /* [FIGMA] 500 */
+      margin-top: 0;
+      margin-left: calc(40 / 1580 * 100%);    /* [ĐO] 3 × 500 + 2 × 40 = 1580 */
+    }
+
+    .category:first-child { margin-left: 0; }
+  }
+}

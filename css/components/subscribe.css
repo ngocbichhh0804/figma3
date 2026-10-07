@@ -1,0 +1,54 @@
+/* Đăng ký nhận tin: tiêu đề hai dòng, ô email trắng, nút đen. */
+@layer components {
+  .subscribe__inner {
+    max-inline-size: 1020px;         /* [FIGMA] 1020 */
+    margin-top: clamp(64px, calc(170 / 19.2 * 1vw), 170px);   /* [ĐO] chữ tiêu đề y = 4636 */
+  }
+
+  .subscribe__title {
+    font-size: clamp(32px, calc(72 / 19.2 * 1vw), 72px);   /* [FIGMA] 72 */
+    line-height: calc(97 / 72);      /* [FIGMA] hộp 2 × 97 = 194 */
+  }
+
+  .subscribe__form { margin-top: clamp(28px, calc(50 / 19.2 * 1vw), 50px); }   /* [ĐO] ô y = 4862 */
+
+  .subscribe__input {
+    display: block;
+    inline-size: 100%;
+    padding: 21px clamp(20px, calc(50 / 19.2 * 1vw), 50px) 19px;   /* [FIGMA] 20/50; chữ hạ 1px khớp ảnh [ĐO] */
+    border: 0;
+    font-style: italic;
+    letter-spacing: 0.017em;         /* [ĐO] Figma 2% */
+    word-spacing: -1px;              /* [ĐO] */
+    font-weight: var(--weight-regular);
+    line-height: 24px;               /* [FIGMA] hộp 24 */
+    background-color: var(--surface-field);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.04);   /* [FIGMA] drop shadow 0 2 8 #000 4% */
+  }
+
+  .subscribe__input::placeholder { color: var(--text-muted); opacity: 1; }   /* [FIGMA] #B1B1B1 */
+
+  .subscribe__input:focus-visible { outline-offset: 0; }
+
+  .subscribe__button {
+    display: block;
+    inline-size: 100%;
+    margin-top: 14px;                /* [ĐO] nút y = 4940 */
+    padding-block: 21px 19px;        /* [FIGMA] 20; chữ hạ 1px khớp ảnh [ĐO] */
+    font-weight: var(--weight-medium);
+    line-height: 24px;
+    letter-spacing: 0.07em;          /* [ĐO] Figma 8%; Poppins 500 in hoa trên Chrome rộng hơn ~2 px */
+    text-transform: uppercase;
+    color: var(--text-on-dark);
+    background-color: var(--text-primary);   /* [FIGMA] #0D0D0D */
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+
+  @media (hover: hover) {
+    .subscribe__button:hover { background-color: var(--accent); }
+  }
+
+  @media (width >= 64rem) {
+    .subscribe__inner { inline-size: calc(1020 / 1540 * 100%); }
+  }
+}

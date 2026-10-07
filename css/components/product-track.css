@@ -1,0 +1,115 @@
+/* Hàng thẻ sản phẩm 425 × 548, cách nhau 50, tràn ra mép khung như Figma.
+   Khổ nhỏ: cuộn ngang bằng tay (scroll-snap), không JS. */
+@layer components {
+  .product-track {
+    margin-top: clamp(28px, calc(50 / 19.2 * 1vw), 50px);   /* [ĐO] ảnh y = 2284 */
+    margin-inline: calc(-1 * var(--gutter));
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+
+  .product-track__list {
+    font-size: 0;
+    letter-spacing: 0;               /* khoảng trắng giữa inline-block không ăn letter-spacing */
+    white-space: nowrap;
+  }
+
+  .product-card {
+    display: inline-block;
+    vertical-align: top;
+    inline-size: min(72vw, 425px);   /* [ƯỚC] khổ nhỏ: thẻ hé thẻ sau */
+    margin-right: clamp(16px, calc(50 / 19.2 * 1vw), 50px);  /* [FIGMA] 50 */
+    font-size: 16px;
+    white-space: normal;
+    scroll-snap-align: start;
+  }
+
+  .product-card__image {
+    inline-size: 100%;
+    aspect-ratio: 425 / 548;         /* [FIGMA] 425 × 548 */
+    object-fit: cover;
+  }
+
+  /* Hai ảnh Figma chỉ xuất phần lộ ra (305 px). Khổ nhỏ: cover như ảnh khác;
+     desktop: giữ nguyên tỉ lệ, dạt về đúng mép đang thấy (xem media query). */
+
+  .product-card__name {
+    margin-top: 20px;                /* [ĐO] chữ tên y = 2858 */
+    font-size: clamp(22px, calc(28 / 19.2 * 1vw), 28px);   /* [FIGMA] 28 */
+    line-height: calc(38 / 28);      /* [FIGMA] hộp 38 */
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  .product-card__link::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .product-card { position: relative; }
+
+  .product-card__price {
+    margin-top: 2px;                 /* [ĐO] giá y = 2898 */
+    font-size: 20px;                 /* [FIGMA] */
+    font-weight: var(--weight-medium);
+    line-height: 30px;               /* [FIGMA] hộp 30 */
+    letter-spacing: 0.09em;          /* [FIGMA] 9% */
+    text-indent: -1px;               /* [ĐO] dấu "$" x = 665 */
+    color: var(--accent);
+  }
+
+  /* "Add to cart" nằm đúng chỗ giá, ẩn sẵn. Rê chuột / chạm / focus vào thẻ
+     thì hiện nút và ẩn giá (trạng thái Figma vẽ ở thẻ "Black Sofa Set"). */
+  .product-card__cart {
+    position: absolute;
+    left: 0;
+    bottom: 4px;                     /* [ĐO] chữ y = 2898 */
+    z-index: 1;
+    border-bottom: 1px solid var(--line);   /* [ĐO] gạch chân 1 px */
+    font-weight: var(--weight-medium);
+    line-height: 24px;               /* [FIGMA] hộp 24 */
+    letter-spacing: 0.07em;          /* [ĐO] Figma 8%; dò theo vị trí chữ */
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;            /* ẩn thì không bấm nhầm được */
+    transition: opacity var(--duration-fast) var(--ease-out);
+  }
+
+  .product-card__price { transition: opacity var(--duration-fast) var(--ease-out); }
+
+  .product-card:hover .product-card__name,
+  .product-card:focus-within .product-card__name { color: var(--accent); }
+
+  .product-card:hover .product-card__price,
+  .product-card:focus-within .product-card__price { opacity: 0; }
+
+  .product-card:hover .product-card__cart,
+  .product-card:focus-within .product-card__cart { opacity: 1; pointer-events: auto; }
+
+  .products .slider-dots { margin-top: clamp(32px, calc(50 / 19.2 * 1vw), 50px); }   /* [ĐO] chấm y = 2972 */
+
+  @media (width >= 64rem) {
+    .product-track {
+      margin-inline: 0;
+      padding-inline: 0;
+      overflow: visible;             /* tràn ra mép phải như Figma; .page cắt phần dư */
+    }
+
+    .product-card {
+      inline-size: calc(425 / 1540 * 100%);   /* [FIGMA] 425 */
+      margin-right: calc(50 / 1540 * 100%);   /* [FIGMA] 50 */
+    }
+
+    .product-card__image--peek-start { object-fit: contain; object-position: left center; }
+    .product-card__image--peek-end { object-fit: contain; object-position: right center; }
+
+    /* Hàng "Trending": thẻ đầu lấp ló mép trái (x = −120). */
+    .product-track--offset .product-track__list {
+      position: relative;            /* dời bằng left để không nới rộng hàng */
+      left: calc(-310 / 1540 * 100%);         /* [ĐO] thẻ đầu x = −120 */
+    }
+  }
+}

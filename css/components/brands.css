@@ -1,0 +1,45 @@
+/* Dải logo đối tác, kẻ 1 px trên dưới chạy hết bề ngang. */
+@layer components {
+  .brands {
+    margin-top: clamp(64px, calc(167 / 19.2 * 1vw), 167px);   /* [ĐO] kẻ trên y = 6971 */
+    border-block: 1px solid var(--line);   /* [FIGMA] 1920 × 1 #B1B1B1 */
+  }
+
+  .brands__list {
+    padding-block: clamp(40px, calc(84 / 19.2 * 1vw), 84px) clamp(40px, calc(83 / 19.2 * 1vw), 83px);   /* [ĐO] khối trong 201 px, logo giữa y ≈ 7072 */
+    font-size: 0;
+    letter-spacing: 0;               /* khoảng trắng giữa inline-block không ăn letter-spacing */
+    line-height: 33px;               /* [MẪU] logo cao nhất (FurniCare) */
+    text-align: center;
+  }
+
+  .brands__item {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 12px 20px;               /* [ƯỚC] khổ nhỏ: logo xuống dòng */
+  }
+
+  .brands__item img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  @media (width >= 64rem) {
+    .brands__list { text-align: left; white-space: nowrap; }   /* tổng đúng 1540: chống làm tròn đẩy logo cuối xuống dòng */
+
+    .brands__item {
+      margin: 0 0 0 calc(176.75 / 1540 * 100%);   /* [ĐO] 5 logo cách đều: (1540 − 833) / 4 */
+    }
+
+    .brands__item:first-child { margin-left: 0; }
+
+    /* Mỗi logo rộng theo tỉ lệ khung 1540 → co đều ở laptop, đúng px ở 1920. [MẪU] */
+    .brands__item:nth-child(1) { inline-size: calc(136 / 1540 * 100%); }
+    .brands__item:nth-child(2) { inline-size: calc(192 / 1540 * 100%); }
+    .brands__item:nth-child(3) { inline-size: calc(191 / 1540 * 100%); }
+    .brands__item:nth-child(4) { inline-size: calc(224 / 1540 * 100%); }
+    .brands__item:nth-child(5) { inline-size: calc(90 / 1540 * 100%); }
+
+    .brands__item img { inline-size: 100%; }
+  }
+}

@@ -1,19 +1,65 @@
 /* =========================================================================
-   Font thay thế (SIL OFL) cho font bản quyền trong Figma. File woff2 để ngay
-   trong assets/fonts/ chứ không gọi Google Fonts: không phụ thuộc máy chủ
-   ngoài, không gửi IP người xem cho bên thứ ba, chữ hiện sớm hơn.
-   Mỗi file chỉ chứa bảng mã latin; chỉ nạp đúng độ đậm trang thật sự dùng.
+   Font của trang (đều SIL OFL, tự lưu woff2 trong assets/fonts/, chỉ latin).
+   Figma dùng đúng ba họ này nên không phải thay font.
 
-   <Font Figma>  -> <Font OFL>  (vai trò)
+   Cinzel      400                  tiêu đề, tên sản phẩm
+   Poppins     300 / 400 / 500      chữ thường, nav, nút  (+ 300/400 italic)
+   Bebas Neue  400                  logo "FURNICS."
    ========================================================================= */
 @layer reset {
-  /* Mẫu — nhân bản cho từng weight:
   @font-face {
-    font-family: "Mulish";
-    src: url("../assets/fonts/mulish-latin-400-normal.woff2") format("woff2");
+    font-family: "Cinzel";
+    src: url("../assets/fonts/cinzel-latin-400-normal.woff2") format("woff2");
     font-weight: 400;
     font-style: normal;
     font-display: swap;
   }
-  */
+
+  @font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/poppins-latin-300-normal.woff2") format("woff2");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/poppins-latin-300-italic.woff2") format("woff2");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/poppins-latin-400-normal.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/poppins-latin-400-italic.woff2") format("woff2");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    src: url("../assets/fonts/poppins-latin-500-normal.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Bebas Neue";
+    src: url("../assets/fonts/bebas-neue-latin-400-normal.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
 }

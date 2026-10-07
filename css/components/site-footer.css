@@ -1,0 +1,133 @@
+/* Chân trang: logo + giới thiệu, ba cột Links / Social / Contact. */
+@layer components {
+  .site-footer__inner {
+    display: flow-root;
+    padding-block: clamp(64px, calc(170 / 19.2 * 1vw), 170px) clamp(64px, calc(169 / 19.2 * 1vw), 169px);   /* [ĐO] logo y = 7344, trang cao đúng 7786 */
+  }
+
+  .site-footer__brand { max-inline-size: 376px; }   /* [FIGMA] 376 */
+
+  .site-footer__logo { margin-top: 1px; }   /* [ĐO] chữ logo y = 7352 */
+
+  .site-footer__text {
+    max-inline-size: 370px;          /* [FIGMA] 370 */
+    margin-top: 19px;                /* [ĐO] chữ y = 7421 */
+  }
+
+  /* Dòng 2 đoạn giới thiệu: Figma dựng dòng này rộng hơn các dòng khác. */
+  .site-footer__fit { letter-spacing: 0.02em; }   /* [ĐO] */
+
+  .site-footer__copy {
+    margin-top: 21px;                /* [ĐO] Figma paragraph spacing 20 + làm tròn */
+    text-indent: -1px;               /* [ĐO] dấu "©" x = 190 */
+    line-height: 24px;               /* [FIGMA] hộp 24 */
+  }
+
+  .site-footer__credit {
+    padding-block: 1px;              /* vùng bấm ≥ 24 px, không đổi dòng */
+    font-weight: var(--weight-medium);   /* [ĐO] chữ đậm hơn */
+  }
+
+  .site-footer__col {
+    float: left;
+    inline-size: 50%;
+    margin-top: 48px;                /* [ƯỚC] khổ nhỏ */
+  }
+
+  .site-footer__col--contact {
+    clear: left;
+    inline-size: 100%;
+  }
+
+  .site-footer__heading {
+    font-size: 28px;                 /* [FIGMA] */
+    line-height: 38px;               /* [FIGMA] hộp 38 */
+  }
+
+  .site-footer__list { margin-top: 21px; }   /* [ĐO] chữ mục đầu y = 7408 */
+
+  .site-footer__item { line-height: 24px; }   /* [FIGMA] hộp 24 */
+
+  .site-footer__item + .site-footer__item { margin-top: 14px; }   /* [ĐO] bước 38 − 24 */
+
+  .site-footer__link,
+  .site-footer__contact {
+    display: inline-block;
+    font-weight: var(--weight-regular);
+    line-height: 24px;               /* [FIGMA] hộp 24 */
+    letter-spacing: var(--tracking-caps);   /* [FIGMA] 8% */
+    overflow-wrap: anywhere;
+  }
+
+  .site-footer__contact {
+    letter-spacing: 0.078em;         /* [ĐO] Figma 8%; dò theo ảnh (dòng email) */
+    word-spacing: -0.5px;            /* [ĐO] khoảng trắng Figma hẹp hơn Chrome */
+  }
+
+  /* Figma vẽ "@" và "(0)" khác Chrome vài px: chỉnh riêng từng ký tự. */
+  .site-footer__glyph--at {
+    display: inline-block;
+    margin-inline: 1px;              /* [ĐO] "@" Figma rộng hơn 2 px */
+    transform: translate(-0.5px, -1px) scale(1.24);   /* [ĐO] "@" Figma to và cao hơn; transform không đẩy chữ sau */
+  }
+  .site-footer__glyph--paren { margin-left: -1px; }      /* [ĐO] "(0)" sát "12" hơn */
+
+  .site-footer__contact--address { letter-spacing: 0.08em; }   /* [ĐO] dòng địa chỉ khớp ảnh Figma */
+
+  .site-footer__contact--phone {
+    margin-left: -1px;               /* [ĐO] dấu "+" x = 1472 */
+    letter-spacing: 0.075em;         /* [ĐO] chữ số Poppins: Figma hẹp hơn 8% */
+    word-spacing: -1px;              /* [ĐO] */
+  }
+
+  .site-footer__link { text-transform: uppercase; }
+
+  .site-footer__link[aria-current="page"] { color: var(--accent); }
+
+  .site-footer__address { font-style: normal; }
+
+  @media (hover: hover) {
+    .site-footer__link:hover,
+    a.site-footer__contact:hover,
+    .site-footer__credit:hover { color: var(--accent); }
+  }
+
+  @media (pointer: coarse) {
+    .site-footer__link,
+    .site-footer__contact { padding-block: 10px; margin-block: -10px; }   /* vùng chạm 44 px */
+  }
+
+  @media (width >= 48rem) {
+    .site-footer__col,
+    .site-footer__col--contact {
+      clear: none;
+      inline-size: calc(100% / 3);   /* [ƯỚC] tablet/laptop: ba cột dưới khối logo */
+    }
+  }
+
+  /* Figma: logo + 3 cột trên một hàng; dòng bản quyền một dòng (376 hug). */
+  /* Khổ Figma: email rộng đúng bằng cột 258 → không cho rớt dòng. */
+  @media (width >= 120rem) {
+    .site-footer__contact { white-space: nowrap; }
+  }
+
+  @media (width >= 90rem) {
+    .site-footer__copy { white-space: nowrap; }
+
+    .site-footer__brand {
+      float: left;
+      inline-size: calc(376 / 1540 * 100%);
+    }
+
+    .site-footer__col,
+    .site-footer__col--contact { margin-top: 0; }
+
+    .site-footer__col--links {
+      inline-size: calc(324 / 1540 * 100%);   /* [ĐO] Links x = 806 */
+      margin-left: calc(240 / 1540 * 100%);
+    }
+
+    .site-footer__col--social { inline-size: calc(342 / 1540 * 100%); }   /* [ĐO] Social x = 1130 */
+    .site-footer__col--contact { inline-size: calc(258 / 1540 * 100%); }  /* [ĐO] Contact x = 1472 → 1730 */
+  }
+}

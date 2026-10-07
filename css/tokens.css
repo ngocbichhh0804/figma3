@@ -1,5 +1,5 @@
 /* =========================================================================
-   Design token — figma3
+   Design token — figma3 (Furnics)
 
    File này chỉ chứa giá trị DÙNG CHUNG: bảng màu, font, thang độ đậm, cỡ
    chữ và leading chung, chuyển động, bo góc. Số đo riêng của từng component
@@ -13,33 +13,44 @@
 @layer tokens {
   :root {
     /* ---------- Màu: giá trị gốc ---------- */
-    --color-page: #ffffff;           /* [ƯỚC]   nền trang — thay bằng màu Figma */
-    --color-ink: #111111;            /* [ƯỚC]   chữ chính                       */
-    --color-accent: #cd794a;         /* [ƯỚC]   viền focus, điểm nhấn           */
-    --color-white: #ffffff;
+    --color-cream: #f6f5f2;          /* [FIGMA] màu chữ nút "Shop now"; nền trang đo ra #F6F5F1 (JPG) */
+    --color-ink: #0d0d0d;            /* [FIGMA] chữ chính, nút "Subscribe now" */
+    --color-olive: #787d62;          /* [FIGMA] nút chính, link đang chọn, giá, hover */
+    --color-stone: #b1b1b1;          /* [FIGMA] viền, chấm slider, placeholder */
+    --color-mist: #e7e5e2;           /* [FIGMA] dấu ngoặc kép trang trí */
+    --color-white: #ffffff;          /* [FIGMA] nền ô email */
 
     /* ---------- Màu: theo ngữ nghĩa ----------
        Component chỉ dùng tầng này, nhờ vậy đổi theme chỉ phải sửa ở đây. */
-    --surface-page: var(--color-page);
+    --surface-page: var(--color-cream);
+    --surface-field: var(--color-white);
     --text-primary: var(--color-ink);
-    --accent-stroke: var(--color-accent);
+    --text-on-dark: var(--color-cream);
+    --text-muted: var(--color-stone);
+    --accent: var(--color-olive);
+    --line: var(--color-stone);
+    --accent-stroke: var(--color-olive);
 
-    /* ---------- Chữ ----------
-       Font thương mại trong Figma → thay bằng font OFL tự lưu ở assets/fonts/
-       (xem css/fonts.css). Ghi rõ font gốc bên cạnh mỗi dòng. */
-    --font-display: Georgia, serif;          /* thay … */
-    --font-sans: system-ui, sans-serif;      /* thay … */
+    /* ---------- Chữ ---------- */
+    --font-display: "Cinzel", Georgia, serif;          /* [FIGMA] Cinzel 400 */
+    --font-sans: "Poppins", system-ui, sans-serif;     /* [FIGMA] Poppins */
+    --font-logo: "Bebas Neue", Impact, sans-serif;     /* [FIGMA] Bebas Neue 400 */
 
-    --text-body: 16px;
-    --leading-tight: 1.15;
-    --leading-normal: 1.5;
+    --text-body: 16px;               /* [FIGMA] */
+    --leading-body: calc(29 / 16);   /* [ĐO] Figma ghi 180% nhưng dựng dòng cách đúng 29 px ở cỡ 16 */
+    --tracking-body: 0.02em;         /* [FIGMA] 2% */
+    --tracking-caps: 0.08em;         /* [FIGMA] 8% — nav, nút, chữ in hoa nhỏ */
+    /* Cinzel: Figma ghi "100%" nhưng hộp chữ cao bằng ascent+descent của font
+       (1.348em: 108px → 145, 72px → 97, 28px → 38). [FIGMA] chiều cao hộp. */
+    --leading-display: 1.348;
 
+    --weight-light: 300;
     --weight-regular: 400;
-    --weight-bold: 700;
+    --weight-medium: 500;
 
-    /* ---------- Hình khối, chuyển động ---------- */
-    --radius-pill: 999px;
+    /* ---------- Chuyển động ---------- */
     --duration-fast: 160ms;
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --radius-pill: 999px;
   }
 }

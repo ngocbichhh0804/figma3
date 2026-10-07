@@ -1,0 +1,107 @@
+/* Trích dẫn khách hàng: dấu ngoặc lớn, chữ nghiêng 29 px, hai mũi tên. */
+@layer components {
+  .testimonial { margin-top: clamp(64px, calc(170 / 19.2 * 1vw), 170px); }   /* [ĐO] */
+
+  .testimonial__inner {
+    position: relative;
+    text-align: center;
+  }
+
+  .testimonial__mark {
+    display: inline-block;
+    inline-size: clamp(100px, calc(165 / 19.2 * 1vw), 165px);   /* [MẪU] 165 × 116 (hình 140.63 × 98.77) */
+  }
+
+  .testimonial__figure {
+    max-inline-size: 1020px;         /* [FIGMA] 1020 */
+    margin: clamp(8px, calc(11 / 19.2 * 1vw), 11px) auto 0;   /* [ĐO] chữ y = 3317 */
+  }
+
+  .testimonial__quote {
+    margin: 0;
+    font-size: clamp(18px, calc(29 / 19.2 * 1vw), 29px);   /* [FIGMA] 29 */
+    font-style: italic;
+    line-height: 1.8;                /* [FIGMA] 180% */
+    letter-spacing: 0.012em;         /* [ĐO] Figma 2% nhưng Poppins italic dựng trên Chrome rộng hơn; 0.012em giữ đúng chỗ ngắt dòng */
+  }
+
+  /* Dấu “ , ” trong Figma là hình glyph khác Poppins italic của Chrome (dạng
+     "66/99" có chấm tròn). Chữ thật vẫn giữ trong HTML (đọc/copy được) nhưng
+     trong suốt; hình dấu vẽ bằng mask tách từ ảnh Figma. Toạ độ tính theo em
+     (cỡ 29px) nên co theo cỡ chữ. [ĐO] */
+  .testimonial__punct {
+    position: relative;
+    color: transparent;
+  }
+
+  .testimonial__punct::after {
+    content: "";
+    position: absolute;
+    inline-size: 0.3103em;           /* [ĐO] 9 px */
+    block-size: 0.2759em;            /* [ĐO] 8 px */
+    background-color: var(--text-primary);
+    mask: no-repeat 0 0 / 100% 100%;
+  }
+
+  .testimonial__punct--open::after {
+    left: 0.02em;
+    top: 0.2245em;
+    mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1AAAAbklEQVR4nI2QXQmAQBCE5wwgNjCCmOAiGOGq2MQoNhAtoCbxk9M9OXzRgYXZZX5gHaAvFK/dS2qMl5LCWzRI6iVVJlweQ6wDArAZjzPZ7dpTUnTsVhdrWrvXedLIjRnwxg+gy5MS1ow7S5f784ITc/NJ93je/lsAAAAASUVORK5CYII=");   /* [ĐO] tách từ ảnh Figma */
+  }
+
+  .testimonial__punct--comma::after {
+    left: 0;
+    top: 0.9352em;
+    inline-size: 0.2069em;           /* [ĐO] 6 px */
+    mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAICAYAAADaxo44AAAAV0lEQVR4nGP8//8/AzbAgsSeD6XXMzAwbGIA6fj//z/ffwSoB4kxQVUJMjAwLICyz4NJqA4Q1oPqkAfbCxXM/////weYMSAMsxykXY6BgeETzCWMuJwLADWdRuX3c4KNAAAAAElFTkSuQmCC");   /* [ĐO] tách từ ảnh Figma */
+  }
+
+  .testimonial__punct--close::after {
+    left: -0.0352em;
+    top: 0.211em;
+    mask-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAICAYAAAArzdW1AAAAfElEQVR4nI2Q3Q1BYRBEzxXP6EAHWqACLShBCbcDiQq0oAJUoAVKuCo4sjL43thkszP7M5Nsp/Irxg3uU4/ADFgBA7CnlNS539iou+BbzUe5ngKX4Lqu/h14vDpRatWqFj8kP0sTtVdP4YtYLdulq3qOylod1O3bpfvnBU9RDoV80TkocgAAAABJRU5ErkJggg==");   /* [ĐO] tách từ ảnh Figma */
+  }
+
+  /* Figma dựng mỗi dòng trích dẫn hơi khác nhau → chỉnh riêng từng dòng/cụm
+     ở khổ Figma. position + left không đổi chỗ ngắt dòng. [ĐO] */
+  .testimonial__nudge,
+  .testimonial__line { position: relative; }
+
+  @media (width >= 90rem) {
+    .testimonial__mark { position: relative; left: -1px; }   /* [ĐO] hình ngoặc x = 889 */
+
+    .testimonial__nudge--start { left: -1px; }          /* [ĐO] "“Pretium" */
+    .testimonial__nudge--cursus { left: 2px; }          /* [ĐO] "cursus." */
+
+    .testimonial__line--2 {
+      left: -1px;                    /* [ĐO] dòng 2 */
+      letter-spacing: 0.0125em;      /* [ĐO] */
+    }
+
+    .testimonial__line--3 {
+      left: 1px;                     /* [ĐO] dòng 3 */
+      letter-spacing: 0.014em;       /* [ĐO] */
+    }
+  }
+
+  .testimonial__author {
+    margin-top: clamp(16px, calc(28 / 19.2 * 1vw), 28px);  /* [ĐO] chữ tên y = 3497 */
+    font-weight: var(--weight-medium);
+    color: var(--accent);
+  }
+
+  .testimonial__arrow {
+    display: none;
+    position: absolute;
+    overflow: visible;
+    color: var(--accent);            /* [ĐO] nét mũi tên #787D62 */
+  }
+
+  .testimonial__arrow--prev { left: 0; }       /* [ĐO] x = 189 (nét 2 px lố 1 px) */
+  .testimonial__arrow--next { right: -1px; }   /* [ĐO] x = 1731 */
+
+  @media (width >= 64rem) {
+    .testimonial__figure { inline-size: calc(1020 / 1540 * 100%); }
+    .testimonial__arrow { display: block; top: clamp(90px, calc(143 / 19.2 * 1vw), 143px); }
+  }
+}

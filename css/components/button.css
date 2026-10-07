@@ -1,0 +1,38 @@
+/* Nút chữ in hoa + mũi tên: "Shop now" (đặc) và "About us" (viền). */
+@layer components {
+  .button {
+    display: inline-block;
+    padding: 19px 49px;              /* [FIGMA] padding 20/50, trừ 1px viền */
+    border: 1px solid transparent;
+    font-family: var(--font-sans);
+    font-size: 16px;                 /* [FIGMA] */
+    font-weight: var(--weight-medium);
+    line-height: 24px;               /* [FIGMA] hộp chữ 24 */
+    letter-spacing: 0.07em;          /* [ĐO] Figma 8%; dò theo vị trí chữ trên ảnh Figma */
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background-color var(--duration-fast) var(--ease-out),
+                color var(--duration-fast) var(--ease-out);
+  }
+
+  .button__icon {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 4px;                /* [FIGMA] chữ 96 + 4 + mũi tên 24 + 2 × 50 = 224 */
+  }
+
+  .button--solid {
+    color: var(--text-on-dark);
+    background-color: var(--accent);       /* [FIGMA] #787D62 */
+  }
+
+  .button--outline {
+    color: var(--text-primary);
+    border-color: var(--line);             /* [FIGMA] 1px #B1B1B1 */
+  }
+
+  @media (hover: hover) {
+    .button--solid:hover { background-color: var(--text-primary); }
+    .button--outline:hover { color: var(--text-on-dark); background-color: var(--accent); border-color: var(--accent); }
+  }
+}

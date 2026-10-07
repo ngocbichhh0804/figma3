@@ -1,0 +1,47 @@
+/* Hero "Wooden Table Set": ảnh bên phải, tiêu đề lớn đè lên ảnh. */
+@layer components {
+  .hero__inner {
+    display: flow-root;
+    padding-top: clamp(32px, calc(80 / 19.2 * 1vw), 80px);   /* [ĐO] ảnh y = 185 (dưới header 105) */
+  }
+
+  .hero__image {
+    inline-size: 100%;
+    aspect-ratio: 760 / 682;         /* [FIGMA] 760 × 682 */
+    object-fit: cover;
+  }
+
+  .hero__content { padding-top: 32px; }   /* [ƯỚC] khổ nhỏ: chữ dưới ảnh */
+
+  .hero__title {
+    position: relative;
+    z-index: 1;                      /* chữ đè lên ảnh như Figma */
+    font-size: clamp(42px, calc(108 / 19.2 * 1vw), 108px);   /* [FIGMA] 108 */
+    line-height: calc(145 / 108);    /* [FIGMA] hộp 145 */
+  }
+
+  .hero__text {
+    max-inline-size: 762px;          /* [FIGMA] 760 (+2: Chrome dựng rộng hơn, giữ đúng chỗ ngắt dòng) */
+    margin-top: clamp(8px, calc(10 / 19.2 * 1vw), 10px);   /* [ĐO] chữ y = 474 */
+  }
+
+  .hero__cta { margin-top: clamp(28px, calc(46 / 19.2 * 1vw), 46px); }   /* [ĐO] nút y = 600 */
+
+  .hero__dots { margin-top: clamp(32px, calc(80 / 19.2 * 1vw), 80px); }  /* [ĐO] chấm y = 744 */
+
+  @media (width >= 64rem) {
+    /* Ảnh nổi bên phải nhưng shape-outside thu vùng tránh về 0: tiêu đề
+       chạy thẳng qua ảnh thay vì bị ngắt dòng. */
+    .hero__image {
+      float: right;
+      inline-size: calc(760 / 1540 * 100%);   /* [FIGMA] 760 trên khung 1540 */
+      shape-outside: inset(0 0 0 100%);
+    }
+
+    .hero__content { padding-top: clamp(40px, calc(127 / 19.2 * 1vw), 127px); }   /* [ĐO] chữ tiêu đề y = 339 */
+
+    .hero__title { white-space: nowrap; }
+
+    .hero__text { inline-size: calc(762 / 1540 * 100%); }
+  }
+}

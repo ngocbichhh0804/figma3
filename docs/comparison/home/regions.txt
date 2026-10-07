@@ -1,0 +1,61 @@
+# Vùng kiểm pixel trang Furnics (khung 1920 × 7786). Ngưỡng mặc định 110 = nét tối.
+logo            185,25,315,75
+nav-home        835,35,895,65   thr=200
+nav-about       935,35,1003,65
+nav-services    1042,35,1133,65
+nav-shop        1172,35,1229,65
+nav-blog        1269,35,1324,65
+nav-contact     1364,35,1458,65
+icon-search     1550,36,1580,68
+icon-person     1612,36,1641,68
+icon-cart       1674,36,1734,68
+header-line     0,100,1920,108  thr=200
+hero-title      180,330,1260,430 thr=60
+hero-text       185,468,955,556 rows
+hero-button     185,595,420,668 thr=200
+hero-button-txt 230,620,370,645 light thr=200
+hero-dots       185,740,285,774 thr=200
+feature-1       185,1030,420,1125 thr=200
+feature-2       598,1030,840,1125 thr=200
+feature-3       1012,1030,1266,1125 thr=200
+feature-4       1425,1030,1732,1125 thr=200
+about-title     1025,1415,1470,1490
+about-text      1025,1528,1652,1722 rows
+about-button    1025,1776,1250,1850 thr=200
+featured-title  185,2148,1130,2213
+featured-link   1615,2172,1732,2198
+card1-name      185,2852,415,2884 thr=200
+card1-cart      185,2893,312,2921
+card2-name      660,2852,975,2884
+card2-price     660,2893,722,2958 thr=200
+card3-name      1135,2852,1350,2884
+card4-name      1610,2852,1805,2884
+featured-dots   908,2966,1012,3003 thr=200
+quote-mark      880,3170,1040,3282 thr=240
+quote-text      445,3310,1475,3458 rows
+quote-author    893,3490,1027,3517 thr=200
+arrow-prev      184,3304,288,3383 thr=200
+arrow-next      1632,3304,1736,3383 thr=200
+cat-labels      185,3690,1412,3722
+cat-dots        908,4416,1012,4453 thr=200
+subscribe-title 445,4628,1480,4792 rows
+subscribe-ph    490,4880,680,4910 thr=220
+subscribe-btn   880,4960,1040,4985 light thr=200
+trending-title  185,5185,975,5251
+trending-link   1615,5208,1732,5236
+trend-names     0,5889,1525,5922
+trend-prices    350,5929,1370,5958 thr=200
+trending-dots   908,6003,1012,6040 thr=200
+articles-title  185,6216,915,6282
+articles-link   1548,6239,1732,6267
+article1        185,6622,655,6802 thr=200
+article2        705,6622,1180,6802
+article3        1225,6622,1725,6802
+brand-line-top  0,6967,1920,6975 thr=200
+logos           185,7050,1735,7095 thr=220
+brand-line-bot  0,7169,1920,7177 thr=200
+footer-logo     185,7345,315,7390
+footer-text     185,7415,570,7578 rows
+footer-links    800,7345,895,7616 thr=200
+footer-social   1124,7345,1236,7616
+footer-contact  1466,7345,1734,7504
